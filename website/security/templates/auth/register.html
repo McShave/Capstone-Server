@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="auth-page">  <div class="auth-form">
+        <h2>Register</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+            {% for message in get_flashed_messages(with_categories=true) %}
+            <div class="flash {{ message[0] }}">{{ message[1] }}</div>
+            {% endfor %}
+        </form>
+    </div>
+</div>
+{% endblock %}

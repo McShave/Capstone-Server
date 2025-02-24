@@ -1,0 +1,161 @@
+/* General Body Styling */
+body {
+    background-color: #D1F8EF;
+    color: #3674B5;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Container */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Page Title */
+.page-title {
+    text-align: center;
+    color: #3674B5;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #3674B5;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #578FCA;
+}
+
+/* Flash Messages */
+.flash {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.flash.success {
+    background-color: #A1E3F9;
+    color: #3674B5;
+}
+
+.flash.error {
+    background-color: #FF6B6B;
+    color: white;
+}
+
+/* Sensor Grid */
+.sensor-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-around;
+}
+
+.sensor {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 280px;
+    transition: transform 0.3s;
+}
+
+.sensor:hover {
+    transform: scale(1.05);
+}
+
+.sensor h3 {
+    font-size: 1.6em;
+    color: #578FCA;
+}
+
+.sensor p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Sensor Status Styling */
+.status {
+    font-weight: bold;
+    color: #3674B5;
+}
+
+/* Buttons */
+button {
+    background-color: #3674B5;
+    color: white;
+    border: 2px solid #578FCA;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #578FCA;
+    transform: translateY(-2px);
+}
+
+/* Form Styling */
+form input {
+    width: 100%;
+    padding: 12px 18px;
+    margin: 10px 0;
+    border: 2px solid #3674B5;
+    border-radius: 8px;
+    font-size: 1.1em;
+    box-sizing: border-box;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #578FCA;
+}
+
+form h2 {
+    font-size: 2em;
+    color: #3674B5;
+    text-align: center;
+    margin-bottom: 20px;
+}
