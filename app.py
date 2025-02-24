@@ -15,7 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Turning off unnecessary 
 db = SQLAlchemy(app)
 
 
-# DataBase(SQLite3) code: 
+### DataBase(SQLite3) code: 
 import sqlite3
 
 # Connect to database file
