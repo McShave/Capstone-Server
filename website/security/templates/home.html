@@ -1,71 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="main-content">  <h2 class="page-title">Home Security System</h2>
+<div class="main-content">
+    <h2 class="page-title">Home Security System</h2>
     <div class="sensor-grid">
         <div class="sensor">
             <h3>Window Sensor</h3>
-            <p>Status: <span id="window-status" class="sensor-status loading">Loading...</span></p>
+            <p>Status: <span id="window-status" class="status">Loading...</span></p>
         </div>
         <div class="sensor">
             <h3>Motion Sensor</h3>
-            <p>Status: <span id="motion-status" class="sensor-status loading">Loading...</span></p>
+            <p>Status: <span id="motion-status" class="status">Loading...</span></p>
         </div>
         <div class="sensor">
             <h3>Gas/Smoke Sensor</h3>
-            <p>Status: <span id="gas-status" class="sensor-status loading">Loading...</span></p>
+            <p>Status: <span id="gas-status" class="status">Loading...</span></p>
         </div>
-
         <div class="sensor">
             <h3>Water Sensor</h3>
-            <p>Status: <span id="water-status" class="sensor-status loading">Loading...</span></p>
+            <p>Status: <span id="water-status" class="status">Loading...</span></p>
         </div>
         <div class="sensor">
             <h3>Smoke Sensor</h3>
-            <p>Status: <span id="smoke-status" class="sensor-status loading">Loading...</span></p>
+            <p>Status: <span id="smoke-status" class="status">Loading...</span></p>
         </div>
         <div class="sensor">
             <h3>Environmental Sensor</h3>
-            <p>Status: <span id="environmental-status" class="sensor-status loading">Loading...</span></p>
+            <p>Status: <span id="environmental-status" class="status">Loading...</span></p>
         </div>
-
         <div class="sensor">
             <h3>Temperature Sensor</h3>
-            <p>Status: <span id="temperature-status" class="sensor-status loading">Loading...</span></p>
+            <p>Status: <span id="temperature-status" class="status">Loading...</span></p>
         </div>
         <div class="sensor">
             <h3>Door Sensor</h3>
-            <p>Status: <span id="door-status" class="sensor-status loading">Loading...</span></p>
+            <p>Status: <span id="door-status" class="status">Loading...</span></p>
         </div>
     </div>
 </div>
-
-<script>
-    // Placeholder for sensor data (replace with actual Flask API)
-    document.getElementById("window-status").innerText = "Loading...";
-    document.getElementById("window-status").classList.add("loading");
-
-    document.getElementById("motion-status").innerText = "Loading...";
-    document.getElementById("motion-status").classList.add("loading");
-
-    document.getElementById("gas-status").innerText = "Loading...";
-    document.getElementById("gas-status").classList.add("loading");
-
-    document.getElementById("water-status").innerText = "Loading...";
-    document.getElementById("water-status").classList.add("loading");
-
-    document.getElementById("smoke-status").innerText = "Loading...";
-    document.getElementById("smoke-status").classList.add("loading");
-
-    document.getElementById("environmental-status").innerText = "Loading...";
-    document.getElementById("environmental-status").classList.add("loading");
-
-    document.getElementById("temperature-status").innerText = "Loading...";
-    document.getElementById("temperature-status").classList.add("loading");
-
-    document.getElementById("door-status").innerText = "Loading...";
-    document.getElementById("door-status").classList.add("loading");
-
-</script>
-
 {% endblock %}

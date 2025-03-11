@@ -1,28 +1,28 @@
 /* General Body Styling */
 body {
-    background-color: #D1F8EF;
-    color: #3674B5;
-    font-family: 'Arial', sans-serif;
+    background-color: #ECF0F1;
+    color: #2C3E50;
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
 }
 
 /* Main Container */
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 30px;
-    background: white;
+    background: #FFFFFF;
     border-radius: 12px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 /* Page Title */
 .page-title {
     text-align: center;
-    color: #3674B5;
-    font-size: 2.5em;
-    font-weight: bold;
+    color: #2980B9;
+    font-size: 2.8em;
+    font-weight: 600;
     margin-bottom: 30px;
 }
 
@@ -32,14 +32,23 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
-    background-color: #3674B5;
-    color: white;
+    background-color: #AEDFF7; /* Bright pastel blue */
+    color: #2C3E50;          /* Dark text for readability */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .navbar .logo {
+    display: flex;
+    align-items: center;
     font-size: 1.8em;
     font-weight: bold;
+}
+
+/* Logo Image Styling */
+.logo img {
+    vertical-align: middle;
+    max-height: 40px;
+    margin-right: 10px;
 }
 
 .navbar nav {
@@ -48,7 +57,7 @@ body {
 }
 
 .navbar a {
-    color: white;
+    color: #2C3E50;  /* Dark text color */
     text-decoration: none;
     font-weight: bold;
     padding: 10px 15px;
@@ -57,7 +66,7 @@ body {
 }
 
 .navbar a:hover {
-    background-color: #578FCA;
+    background-color: #87CEEB;  /* A slightly darker sky-blue on hover */
 }
 
 /* Flash Messages */
@@ -71,40 +80,42 @@ body {
 }
 
 .flash.success {
-    background-color: #A1E3F9;
-    color: #3674B5;
+    background-color: #1ABC9C;
+    color: white;
 }
 
 .flash.error {
-    background-color: #FF6B6B;
+    background-color: #E74C3C;
     color: white;
 }
 
 /* Sensor Grid */
 .sensor-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    margin-top: 20px;
 }
 
 .sensor {
-    background: white;
-    padding: 20px;
+    background: #FFFFFF;
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 280px;
     transition: transform 0.3s;
+    cursor: pointer;
+    width: 100%;
 }
 
 .sensor:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
 }
 
 .sensor h3 {
     font-size: 1.6em;
-    color: #578FCA;
+    color: #2980B9;
 }
 
 .sensor p {
@@ -112,17 +123,33 @@ body {
     margin-top: 10px;
 }
 
-/* Sensor Status Styling */
-.status {
+.sensor .status {
     font-weight: bold;
-    color: #3674B5;
+    font-size: 1.3em;
+}
+
+/* Sensor Status Color Coding */
+.sensor .active {
+    color: #1ABC9C; /* Green for active status */
+}
+
+.sensor .triggered {
+    color: #E74C3C; /* Red for triggered status */
+}
+
+.sensor .inactive {
+    color: #BDC3C7; /* Gray for inactive status */
+}
+
+.sensor .loading {
+    color: #95A5A6; /* Light gray for loading state */
 }
 
 /* Buttons */
 button {
-    background-color: #3674B5;
+    background-color: #2980B9;
     color: white;
-    border: 2px solid #578FCA;
+    border: 2px solid #3498DB;
     padding: 12px 18px;
     border-radius: 8px;
     font-size: 1.1em;
@@ -133,7 +160,7 @@ button {
 }
 
 button:hover {
-    background-color: #578FCA;
+    background-color: #3498DB;
     transform: translateY(-2px);
 }
 
@@ -142,7 +169,7 @@ form input {
     width: 100%;
     padding: 12px 18px;
     margin: 10px 0;
-    border: 2px solid #3674B5;
+    border: 2px solid #2980B9;
     border-radius: 8px;
     font-size: 1.1em;
     box-sizing: border-box;
@@ -150,12 +177,12 @@ form input {
 
 form input:focus {
     outline: none;
-    border-color: #578FCA;
+    border-color: #1ABC9C;
 }
 
 form h2 {
     font-size: 2em;
-    color: #3674B5;
+    color: #2C3E50;
     text-align: center;
     margin-bottom: 20px;
 }

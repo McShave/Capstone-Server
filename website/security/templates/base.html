@@ -6,7 +6,10 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Alarmingly Good Security</div>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Team Logo">
+            Alarmingly Good Security
+        </div>
         <nav>
             <a href="{{ url_for('home') }}">Home</a>
             {% if g.user %}
