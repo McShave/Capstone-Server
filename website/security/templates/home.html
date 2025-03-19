@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-content">
+    <h2 class="page-title">Home Security System</h2>
+    <div class="sensor-grid">
+        <div class="sensor">
+            <h3>Window Sensor</h3>
+            <p>Status: <span id="window-status" class="status">Loading...</span></p>
+        </div>
+        <div class="sensor">
+            <h3>Motion Sensor</h3>
+            <p>Status: <span id="motion-status" class="status">Loading...</span></p>
+        </div>
+        <div class="sensor">
+            <h3>Gas/Smoke Sensor</h3>
+            <p>Status: <span id="gas-status" class="status">Loading...</span></p>
+        </div>
+        <div class="sensor">
+            <h3>Water Sensor</h3>
+            <p>Status: <span id="water-status" class="status">Loading...</span></p>
+        </div>
+        <div class="sensor">
+            <h3>Smoke Sensor</h3>
+            <p>Status: <span id="smoke-status" class="status">Loading...</span></p>
+        </div>
+        <div class="sensor">
+            <h3>Environmental Sensor</h3>
+            <p>Status: <span id="environmental-status" class="status">Loading...</span></p>
+        </div>
+        <div class="sensor">
+            <h3>Temperature Sensor</h3>
+            <p>Status: <span id="temperature-status" class="status">Loading...</span></p>
+        </div>
+        <div class="sensor">
+            <h3>Door Sensor</h3>
+            <p>Status: <span id="door-status" class="status">Loading...</span></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

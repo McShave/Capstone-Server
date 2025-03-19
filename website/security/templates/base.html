@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alarmingly Good Security</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Team Logo" id="logoImg">
+            Alarmingly Good Security
+        </div>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            {% if g.user %}
+                <a href="{{ url_for('auth.logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.register') }}">Register</a>
+            {% endif %}
+
+            <!-- Minimal Light/Dark Mode Toggle with Lightbulb icon -->
+            <span class="mode-toggle">
+                <span class="mode-icon" id="lightIcon" title="Light Mode">💡</span>
+                <label class="switch" title="Toggle Dark Mode">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+                </label>
+                <span class="mode-icon" id="moonIcon" title="Dark Mode">🌙</span>
+            </span>
+        </nav>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('darkModeToggle');
+        const lightIcon = document.getElementById('lightIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const logoImg = document.getElementById('logoImg');
+
+        // Paths for logos - update these if you have a dark-mode version
+        const darkLogo = "{{ url_for('static', filename='logo.png') }}";
+        const lightLogo = "{{ url_for('static', filename='logo.png') }}";
+
+        function enableDarkMode() {
+          document.body.classList.add('dark-mode');
+          localStorage.setItem('darkMode', 'enabled');
+          // Swap to dark-mode logo if available; otherwise, remove or adjust this line.
+          logoImg.src = darkLogo;
+          lightIcon.style.opacity = '0.5';
+          moonIcon.style.opacity = '1';
+        }
+
+        function disableDarkMode() {
+          document.body.classList.remove('dark-mode');
+          localStorage.setItem('darkMode', 'disabled');
+          logoImg.src = lightLogo;
+          lightIcon.style.opacity = '1';
+          moonIcon.style.opacity = '0.5';
+        }
+
+        // Check preference on page load
+        if (localStorage.getItem('darkMode') === 'enabled') {
+          toggle.checked = true;
+          enableDarkMode();
+        } else {
+          disableDarkMode();
+        }
+
+        // Toggle dark mode on change
+        toggle.addEventListener('change', function () {
+          if (this.checked) {
+            enableDarkMode();
+          } else {
+            disableDarkMode();
+          }
+        });
+      });
+    </script>
+</body>
+</html>
