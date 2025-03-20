@@ -50,7 +50,6 @@
         function enableDarkMode() {
           document.body.classList.add('dark-mode');
           localStorage.setItem('darkMode', 'enabled');
-          // Swap to dark-mode logo if available; otherwise, remove or adjust this line.
           logoImg.src = darkLogo;
           lightIcon.style.opacity = '0.5';
           moonIcon.style.opacity = '1';
@@ -72,13 +71,24 @@
           disableDarkMode();
         }
 
-        // Toggle dark mode on change
+        // Toggle dark mode on change of the checkbox (switch)
         toggle.addEventListener('change', function () {
           if (this.checked) {
             enableDarkMode();
           } else {
             disableDarkMode();
           }
+        });
+
+        // Also toggle dark mode when clicking the icons.
+        // This toggles the checkbox state and triggers its change event.
+        lightIcon.addEventListener('click', function () {
+          toggle.checked = !toggle.checked;
+          toggle.dispatchEvent(new Event('change'));
+        });
+        moonIcon.addEventListener('click', function () {
+          toggle.checked = !toggle.checked;
+          toggle.dispatchEvent(new Event('change'));
         });
       });
     </script>
