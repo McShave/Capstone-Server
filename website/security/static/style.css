@@ -33,7 +33,11 @@ body {
     align-items: center;
     padding: 20px 30px;
     background-color: #AEDFF7; /* Bright pastel blue */
+<<<<<<< HEAD
     color: #2C3E50;
+=======
+    color: #2C3E50;          /* Dark text for readability */
+>>>>>>> a3760b3bbc96c29e6bbb428486209781bea4252f
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -57,7 +61,11 @@ body {
 }
 
 .navbar a {
+<<<<<<< HEAD
     color: #2C3E50;
+=======
+    color: #2C3E50;  /* Dark text color */
+>>>>>>> a3760b3bbc96c29e6bbb428486209781bea4252f
     text-decoration: none;
     font-weight: bold;
     padding: 10px 15px;
@@ -66,7 +74,11 @@ body {
 }
 
 .navbar a:hover {
+<<<<<<< HEAD
     background-color: #87CEEB;
+=======
+    background-color: #87CEEB;  /* A slightly darker sky-blue on hover */
+>>>>>>> a3760b3bbc96c29e6bbb428486209781bea4252f
 }
 
 /* Flash Messages */
@@ -130,6 +142,7 @@ body {
 
 /* Sensor Status Color Coding */
 .sensor .active {
+<<<<<<< HEAD
     color: #1ABC9C;
 }
 
@@ -143,6 +156,21 @@ body {
 
 .sensor .loading {
     color: #95A5A6;
+=======
+    color: #1ABC9C; /* Green for active status */
+}
+
+.sensor .triggered {
+    color: #E74C3C; /* Red for triggered status */
+}
+
+.sensor .inactive {
+    color: #BDC3C7; /* Gray for inactive status */
+}
+
+.sensor .loading {
+    color: #95A5A6; /* Light gray for loading state */
+>>>>>>> a3760b3bbc96c29e6bbb428486209781bea4252f
 }
 
 /* Buttons */
@@ -186,6 +214,7 @@ form h2 {
     text-align: center;
     margin-bottom: 20px;
 }
+<<<<<<< HEAD
 
 /* Minimal styles for the light/dark mode toggle */
 .mode-toggle {
@@ -323,3 +352,5 @@ body.dark-mode button {
 body.dark-mode button:hover {
     background-color: #3498DB;
 }
+=======
+>>>>>>> a3760b3bbc96c29e6bbb428486209781bea4252f

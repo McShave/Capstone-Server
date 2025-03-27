@@ -7,7 +7,11 @@ from instance import config
 def create_app():
     app = Flask(__name__)
     app.config.from_mapping(
+<<<<<<< HEAD
         SECRET_KEY=config.SECRET,
+=======
+        SECRET_KEY='dev',
+>>>>>>> a3760b3bbc96c29e6bbb428486209781bea4252f
         DATABASE=os.path.join(app.instance_path, 'security.sqlite')
     )
 
