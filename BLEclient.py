@@ -40,7 +40,7 @@ async def handle_device(device):
         # Define notification callback
         def notification_handler(characteristic: BleakGATTCharacteristic, data: bytearray):
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            value = data.decode('utf-8')  # Use the raw data from ESP32, including units
+            value = data.decode("utf-8")  # Use the raw data from ESP32, including units
             sensor_name = descriptor_to_name.get(characteristic.uuid, "Unknown Sensor")
             print(f"[NOTIFICATION] {timestamp} - {sensor_name}: {value}")
 
