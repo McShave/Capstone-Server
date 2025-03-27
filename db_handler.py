@@ -58,6 +58,7 @@ class DBHandler:
     def add_sensor_data(self, f_id, time, value):
         with self.conn:
             self.conn.execute("INSERT INTO sensor_data_db (f_id, time, value) VALUES (?, ?, ?)", (f_id, time, value))
+            print(f"[INFO] Added sensor data: f_id={f_id}, time={time}, value={value}")
 
     def remove_sensor_data_by_device(self, device_address):
         with self.conn:
