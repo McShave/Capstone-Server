@@ -5,11 +5,6 @@ from datetime import datetime
 
 # ESP32 BLE details
 ESP32_DEVICES = [
-    # {
-    #     "address": "3C:8A:1F:50:79:22", 
-    #     "smoke_level_uuid": "9f8230a6-3921-427a-99de-d675cf1352aa"
-    # }
-    # ,
     {"address": "3C:8A:1F:A4:65:8A", "temperature_uuid": "d82312ea-1422-43c7-8931-408812a8f32b", "humidity_uuid": "b2106683-c2c3-47ab-a6ef-9ca7268a8b7b"}
     ]
 

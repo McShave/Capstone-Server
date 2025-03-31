@@ -8,17 +8,7 @@ ESP32_DEVICES = [
     {
         "address": "08:A6:F7:B1:5B:26", 
         "water_uuid": "4ecb82c7-60f9-405e-96d1-731f0e97c012"
-    },
-    # {
-    #     "address": "3C:8A:1F:50:79:22", 
-    #     "smoke_level_uuid": "9f8230a6-3921-427a-99de-d675cf1352aa"
-    # }
-    # ,
-    # {
-    #     "address": "3C:8A:1F:B5:9B:7C", 
-    #     "temperature_uuid": "a12345ea-1422-43c7-8931-408812a8f32b", 
-    #     "humidity_uuid": "b67890c3-c2c3-47ab-a6ef-9ca7268a8b7b"
-    # }
+    }
     ]
 
 db = DBHandler()
