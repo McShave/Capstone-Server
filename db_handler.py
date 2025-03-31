@@ -34,6 +34,7 @@ class DBHandler:
 
     def add_sensor(self, name):
         if not name or name.strip() == "":  # Skip empty or invalid names
+            print("[WARNING] Attempted to add an empty or invalid sensor name. Skipping.")
             return None
         with self.conn:
             self.reset_auto_increment()  # Ensure auto-increment is reset if the table is empty
