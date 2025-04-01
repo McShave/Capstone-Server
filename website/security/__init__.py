@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template
-from .auth import auth  # Keep authentication
+from .auth import auth
 from instance import config
 
 

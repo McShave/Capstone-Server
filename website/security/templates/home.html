@@ -1,41 +1,71 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="main-content">
-    <h2 class="page-title">Home Security System</h2>
-    <div class="sensor-grid">
-        <div class="sensor">
-            <h3>Window Sensor</h3>
-            <p>Status: <span id="window-status" class="status">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Motion Sensor</h3>
-            <p>Status: <span id="motion-status" class="status">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Gas/Smoke Sensor</h3>
-            <p>Status: <span id="gas-status" class="status">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Water Sensor</h3>
-            <p>Status: <span id="water-status" class="status">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Smoke Sensor</h3>
-            <p>Status: <span id="smoke-status" class="status">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Environmental Sensor</h3>
-            <p>Status: <span id="environmental-status" class="status">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Temperature Sensor</h3>
-            <p>Status: <span id="temperature-status" class="status">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Door Sensor</h3>
-            <p>Status: <span id="door-status" class="status">Loading...</span></p>
-        </div>
+<div class="container">
+  <h2>Sensor Data</h2>
+  <div class="sensor-grid">
+    <!-- Water Sensor Card -->
+    <div class="sensor">
+      <h3>Water Sensor</h3>
+      <p class="status loading">Loading...</p>
+      <p>Status: <span class="sensor-status">Normal</span></p>
     </div>
+
+    <!-- Air Quality (MQ-135) Card -->
+    <div class="sensor">
+      <h3>Air Quality</h3>
+      <p class="status loading">Loading...</p>
+      <p>Status: <span class="sensor-status">Normal</span></p>
+    </div>
+
+    <!-- Gas Sensor (BME680) Card -->
+    <div class="sensor">
+      <h3>Gas Sensor</h3>
+      <p class="status loading">Loading...</p>
+      <p>Status: <span class="sensor-status">Normal</span></p>
+    </div>
+
+    <!-- Sound Sensor Card -->
+    <div class="sensor">
+      <h3>Sound Sensor</h3>
+      <p class="status loading">Loading...</p>
+      <p>Status: <span class="sensor-status">Normal</span></p>
+    </div>
+
+    <!-- Temperature (DHT-22) Card -->
+    <div class="sensor">
+      <h3>Temperature</h3>
+      <p class="status loading">Loading...</p>
+      <p>Status: <span class="sensor-status">Normal</span></p>
+    </div>
+
+    <!-- Motion Sensor Card -->
+    <div class="sensor">
+      <h3>Motion Sensor</h3>
+      <p class="status loading">Loading...</p>
+      <p>Status: <span class="sensor-status">Normal</span></p>
+    </div>
+
+    <!-- Door Sensor Card -->
+    <div class="sensor">
+      <h3>Door Sensor</h3>
+      <p class="status loading">Loading...</p>
+      <p>Status: <span class="sensor-status">Normal</span></p>
+    </div>
+
+    <!-- Camera Interface Card (New) -->
+    {% if g.user %}
+    <div class="sensor">
+      <h3>Camera Interface</h3>
+      <p>Click below to view the camera stream:</p>
+      <a href="http://192.168.137.191" target="_blank" class="btn">Go to Camera Interface</a>
+    </div>
+    {% else %}
+    <div class="sensor">
+      <h3>Camera Interface</h3>
+      <p>You must be logged in to access the camera stream. Please <a href="{{ url_for('auth.login') }}">log in</a> to continue.</p>
+    </div>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}
