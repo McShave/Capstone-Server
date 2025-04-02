@@ -1,71 +1,98 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="main-content">  <h2 class="page-title">Home Security System</h2>
-    <div class="sensor-grid">
-        <div class="sensor">
-            <h3>Window Sensor</h3>
-            <p>Status: <span id="window-status" class="sensor-status loading">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Motion Sensor</h3>
-            <p>Status: <span id="motion-status" class="sensor-status loading">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Gas/Smoke Sensor</h3>
-            <p>Status: <span id="gas-status" class="sensor-status loading">Loading...</span></p>
-        </div>
-
-        <div class="sensor">
-            <h3>Water Sensor</h3>
-            <p>Status: <span id="water-status" class="sensor-status loading">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Smoke Sensor</h3>
-            <p>Status: <span id="smoke-status" class="sensor-status loading">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Environmental Sensor</h3>
-            <p>Status: <span id="environmental-status" class="sensor-status loading">Loading...</span></p>
-        </div>
-
-        <div class="sensor">
-            <h3>Temperature Sensor</h3>
-            <p>Status: <span id="temperature-status" class="sensor-status loading">Loading...</span></p>
-        </div>
-        <div class="sensor">
-            <h3>Door Sensor</h3>
-            <p>Status: <span id="door-status" class="sensor-status loading">Loading...</span></p>
-        </div>
+<div class="container">
+  <h2>Sensor Data</h2>
+  <div class="sensor-grid">
+    <!-- Water Sensor Card -->
+    <div class="sensor" id="water-sensor">
+      <h3>Water Sensor</h3>
+      <p class="status">Status: <span class="sensor-status">Loading...</span></p>
     </div>
+
+    <!-- Air Quality (Smoke Sensor) Card -->
+    <div class="sensor" id="air-quality-sensor">
+      <h3>Air Quality</h3>
+      <p class="status">Status: <span class="sensor-status">Loading...</span></p>
+    </div>
+
+    <!-- Humidity Sensor Card -->
+    <div class="sensor" id="humidity-sensor">
+      <h3>Humidity Sensor</h3>
+      <p class="status">Status: <span class="sensor-status">Loading...</span></p>
+    </div>
+
+    <!-- Sound Sensor Card -->
+    <div class="sensor" id="sound-sensor">
+      <h3>Sound Sensor</h3>
+      <p class="status">Status: <span class="sensor-status">Loading...</span></p>
+    </div>
+
+    <!-- Temperature Sensor Card -->
+    <div class="sensor" id="temperature-sensor">
+      <h3>Temperature</h3>
+      <p class="status">Status: <span class="sensor-status">Loading...</span></p>
+    </div>
+
+    <!-- Motion Sensor Card -->
+    <div class="sensor" id="motion-sensor">
+      <h3>Motion Sensor</h3>
+      <p class="status">Status: <span class="sensor-status">Loading...</span></p>
+    </div>
+
+    <!-- Door Sensor Card -->
+    <div class="sensor" id="door-sensor">
+      <h3>Door Sensor</h3>
+      <p class="status">Status: <span class="sensor-status">Loading...</span></p>
+    </div>
+
+    <!-- Camera Interface Card -->
+    {% if g.user %}
+    <div class="sensor">
+      <h3>Camera Interface</h3>
+      <p>Click below to view the camera stream:</p>
+      <a href="http://192.168.137.191" target="_blank" class="btn">Go to Camera Interface</a>
+    </div>
+    {% else %}
+    <div class="sensor">
+      <h3>Camera Interface</h3>
+      <p>You must be logged in to access the camera stream. Please <a href="{{ url_for('auth.login') }}">log in</a> to continue.</p>
+    </div>
+    {% endif %}
+  </div>
 </div>
 
 <script>
-    // Placeholder for sensor data (replace with actual Flask API)
-    document.getElementById("window-status").innerText = "Loading...";
-    document.getElementById("window-status").classList.add("loading");
+  // Fetch sensor data periodically and update the UI
+  async function fetchSensorData() {
+    try {
+      const response = await fetch('/api/sensor-data'); // API endpoint to fetch sensor data
+      const data = await response.json();
 
-    document.getElementById("motion-status").innerText = "Loading...";
-    document.getElementById("motion-status").classList.add("loading");
+      // Update each sensor card with the latest data
+      data.forEach(sensor => {
+        const sensorElement = document.getElementById(`${sensor.name.toLowerCase().replace(' ', '-')}-sensor`);
+        if (sensorElement) {
+          const statusElement = sensorElement.querySelector('.sensor-status');
+          let value = sensor.value || 'No Data';
 
-    document.getElementById("gas-status").innerText = "Loading...";
-    document.getElementById("gas-status").classList.add("loading");
+          // Add units if missing
+          if (sensor.name.toLowerCase().includes('temperature') && !value.includes('°C')) {
+            value += ' °C';
+          } else if (sensor.name.toLowerCase().includes('humidity') && !value.includes('%')) {
+            value += ' %';
+          }
 
-    document.getElementById("water-status").innerText = "Loading...";
-    document.getElementById("water-status").classList.add("loading");
+          statusElement.textContent = value; // Update the sensor value in real-time
+        }
+      });
+    } catch (error) {
+      console.error('Error fetching sensor data:', error);
+    }
+  }
 
-    document.getElementById("smoke-status").innerText = "Loading...";
-    document.getElementById("smoke-status").classList.add("loading");
-
-    document.getElementById("environmental-status").innerText = "Loading...";
-    document.getElementById("environmental-status").classList.add("loading");
-
-    document.getElementById("temperature-status").innerText = "Loading...";
-    document.getElementById("temperature-status").classList.add("loading");
-
-    document.getElementById("door-status").innerText = "Loading...";
-    document.getElementById("door-status").classList.add("loading");
-
+  // Fetch data every 5 seconds
+  setInterval(fetchSensorData, 5000);
+  fetchSensorData(); // Initial fetch
 </script>
-
 {% endblock %}

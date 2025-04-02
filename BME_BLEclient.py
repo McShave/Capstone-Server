@@ -41,8 +41,18 @@ async def handle_device(device):
             print(f"[DEBUG] Notification received for UUID: {characteristic.uuid}")
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             value = data.decode("utf-8").strip()  # Use the raw data from ESP32, including units
-            sensor_name = descriptor_to_name.get(characteristic.uuid, "Unknown Sensor")
-            sensor_id = db.get_sensor_id_by_uuid(sensor_name)  # Get sensor ID from the database using the name
+
+            # Map UUIDs to consistent sensor names
+            if characteristic.uuid == device["temperature_uuid"]:
+                sensor_name = "Temperature"
+            elif characteristic.uuid == device["humidity_uuid"]:
+                sensor_name = "Humidity"
+            else:
+                sensor_name = "Unknown Sensor"
+
+            print(f"[DEBUG] Processed notification: {sensor_name} - {value}")
+
+            sensor_id = db.add_sensor(sensor_name)  # Ensure consistent sensor names in the database
             if sensor_id is not None:
                 db.add_sensor_data(sensor_id, timestamp, value)  # Add data to the database
                 print(f"[NOTIFICATION] {timestamp} - {sensor_name}: {value}")

@@ -2,7 +2,7 @@ import sqlite3
 
 class DBHandler:
     def __init__(self, db_path="sensors.db"):
-        self.conn = sqlite3.connect(db_path)
+        self.conn = sqlite3.connect(db_path, check_same_thread=False)  # Allow access across threads
         self.create_tables()
 
     def create_tables(self):
@@ -64,3 +64,16 @@ class DBHandler:
     def remove_sensor_data_by_device(self, device_address):
         with self.conn:
             self.conn.execute("DELETE FROM sensor_data_db WHERE f_id IN (SELECT id FROM sensors_db WHERE name = ?)", (device_address,))
+
+    def get_all_sensor_data(self):
+        """
+        Fetch the latest sensor data for each sensor.
+        """
+        cursor = self.conn.execute("""
+            SELECT sensors_db.name, sensor_data_db.value, MAX(sensor_data_db.time)
+            FROM sensor_data_db
+            JOIN sensors_db ON sensors_db.id = sensor_data_db.f_id
+            GROUP BY sensors_db.name
+            ORDER BY MAX(sensor_data_db.time) DESC
+        """)
+        return [{"name": row[0], "value": row[1], "time": row[2]} for row in cursor.fetchall()]
